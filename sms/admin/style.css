@@ -1,0 +1,82 @@
+:root {
+    --bg-dark: #0038a8; /* Updated to DepEd Blue */
+    --accent: #ffffff;  /* Highlight color */
+    --text-gray: #94a3b8;
+    --sidebar-width: 260px;
+    --sidebar-collapsed-width: 80px; /* Slightly wider for better icon centering */
+}
+
+/* Sidebar Core */
+.sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: var(--bg-dark);
+    position: fixed;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    z-index: 1000;
+    box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+}
+
+/* Collapsed State */
+.sidebar.collapsed { width: var(--sidebar-collapsed-width); }
+
+.sidebar.collapsed .logo-text,
+.sidebar.collapsed .link-text { 
+    opacity: 0;
+    visibility: hidden;
+    display: none; 
+}
+
+/* Navigation Links */
+.nav-link {
+    color: rgba(255, 255, 255, 0.7); /* Subtle white-grey */
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    margin: 8px 15px; /* Added spacing around the button */
+    border-radius: 12px; /* Rounded pill look */
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.nav-link i { 
+    font-size: 1.3rem; 
+    min-width: 35px; 
+    display: flex;
+    justify-content: center;
+}
+
+/* 🚀 THE FIX: Active & Hover State */
+.nav-link:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* This is the white highlight you wanted */
+.nav-link.active {
+    background-color: white !important; /* White background */
+    color: var(--bg-dark) !important;   /* Blue text */
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Main Content Adjustment */
+#main-wrapper {
+    margin-left: var(--sidebar-width);
+    transition: all 0.3s ease;
+    padding: 25px;
+    background-color: #f4f7fe;
+    min-height: 100vh;
+}
+
+#main-wrapper.expanded { margin-left: var(--sidebar-collapsed-width); }
+
+/* Sidebar Header Adjustment */
+.sidebar-header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
